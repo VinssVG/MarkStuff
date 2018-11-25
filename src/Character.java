@@ -5,17 +5,13 @@ import java.util.Random;
 
 class Character
 {
-    
-    static double seed = 123;
-    
     // Attributes
     private final String name;
     private final double attackValue;
     private final double maxHealth;
     private double currHealth;
     private int numWins;
-    private static Random randomGenerator = new Random(123);
-    
+
     // Constructors
     public Character(String name, double attackValue, double maxHealth, int numWins)
     {
@@ -23,6 +19,7 @@ class Character
         this.attackValue = attackValue;
         this.maxHealth = maxHealth;
         this.numWins = numWins;
+        this.currHealth = this.maxHealth;
     }
     
     public String getName()
@@ -51,10 +48,10 @@ class Character
         return this.name + " current health is " + this.currHealth + ".";
     }
     
-    public int getAttackDamage(int attackValue)
+    public double getAttackDamage(int seed)
     {
-        attackValue += (randomGenerator.nextInt(attackValue) * 1.3) + 0.7;
-        return attackValue;
+        Random randomGenerator = new Random(seed);
+        return this.attackValue * ((randomGenerator.nextDouble() * 0.3) + 0.7);
     }
     
     public double takeDamage(double damage)
