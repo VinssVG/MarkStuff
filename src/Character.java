@@ -36,6 +36,8 @@ class Character
     {
         return maxHealth;
     }
+
+    public double getCurrHeatlh() { return currHealth; }
     
     public int getNumWins()
     {
