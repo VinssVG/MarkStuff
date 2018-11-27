@@ -1,3 +1,8 @@
+//Mark Sollazzo
+//260873844
+
+import java.util.Random;
+
 class BattleGame
 {
     public static void main(String[] args)
