@@ -8,43 +8,31 @@ class FileIO
     
     public static Character readCharacter(String filename)
     {
-        
-        
-        FileReader fr = new FileReader(filename);
-        BufferedReader br = new BufferedReader(fr);
-        String currentLine = br.readLine();
-        while(currentLine != null)
-        {
-            System.out.println(currentLine);
-            currentLine = br.readLine();
-        }
+        Character newChar = null;
         try
         {
-            System.out.println(currentLine);
-        }
-        catch (IOException e)
+        FileReader fr = new FileReader(filename);
+        BufferedReader br = new BufferedReader(fr);
+        int length = Integer.parseInt(br.readLine());
+        // read all the other lines and store them in the array
+        String currLine = br.readLine();
+        int index =0;
+        while(currLine != null) 
+            {
+                newChar = currLine;
+                currLine = br.readLine();
+                index++;
+            }
+            br.close();
+            fr.close();
+        } catch (FileNotFoundException e) 
         {
-            System.out.println("Invalid name, please try again.");
-        }
-        catch (java.io.FileNotFoundException f)
+            System.out.println("the file was not there");
+        } 
+        catch (IOException e) 
         {
-            System.out.println("File nout found.");
+            System.out.println("something went wrong");
         }
-        br.close();
-        fr.close();
+        return newChar;
     }
 }
-
-
-
-    
-    
-   /*try {
-            writeToFile(w, "fruits.txt");
-            writeToFile(f, "fruits.txt");
-        } catch (IOException e) {
-            System.out.println("something went wrong");
-    */
-    
-    
-
