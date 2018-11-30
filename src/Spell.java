@@ -21,12 +21,12 @@ class Spell
         return name;
     }
     
-    public static getMagicDamage()
+    public static double getMagicDamage(int x)
     {
         
     }
     
-    public static toString()
+    public String toString()
     {
         return this.name + "'s does " +minDamage+ "-"+maxDamage+" and has an accuracy of " +accuracy+ ".";
        
