@@ -1,10 +1,18 @@
 //Mark Sollazzo
 //260873844
-
+import java.util.Scanner;
 import java.util.Random;
 
 class BattleGame
 {
+    private static Random randomGenerator = new Random();
+    
+    public static void playGame(String character, String monster)
+    {
+        FileIO.readCharacter(character);
+        FileIO.readCharacter(monster);
+    }
+    
     public static void main(String[] args)
     {
         Character mark = new Character("Mark", 10, 60, 0);
