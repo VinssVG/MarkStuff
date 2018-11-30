@@ -8,7 +8,7 @@ class Spell
     private final double maxDamage;
     private final double accuracy;
     
-    public static Spell(String name, double minDamage, double maxDamage, double accuracy)
+    public Spell(String name, double minDamage, double maxDamage, double accuracy)
     {
         this.name = name;
         this.minDamage = minDamage;
@@ -16,14 +16,14 @@ class Spell
         this.accuracy = accuracy;
     }
         
-    public static String getName()
+    public String getName()
     {
-        return name;
+        return this.name;
     }
     
-    public static double getMagicDamage(int x)
+    public double getMagicDamage(int x)
     {
-        
+        return 0;
     }
     
     public String toString()
