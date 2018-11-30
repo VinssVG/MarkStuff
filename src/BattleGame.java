@@ -15,6 +15,8 @@ class BattleGame
     
     public static void main(String[] args)
     {
+        playGame("character.txt", "monster.txt");
+
         Character mark = new Character("Mark", 10, 60, 0);
 
         System.out.println("Name      : " + mark.getName());
