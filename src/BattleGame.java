@@ -9,14 +9,17 @@ class BattleGame
     
     public static void playGame(String character, String monster)
     {
-        FileIO.readCharacter(character);
-        FileIO.readCharacter(monster);
+        Character hero = (FileIO.readCharacter(character));
+        Character villian = (FileIO.readCharacter(monster));
+        System.out.println("hero is: "+hero+ " and the monster is: "+villian);
     }
     
     public static void main(String[] args)
     {
-        playGame("character.txt", "monster.txt");
-
+        playGame("player.txt", "monster.txt");
+        ;
+        
+/*
         Character mark = new Character("Mark", 10, 60, 0);
 
         System.out.println("Name      : " + mark.getName());
@@ -79,5 +82,6 @@ class BattleGame
             System.out.println(defendingPlayer.getName() + " Died! " + attackingPlayer.toString() + "\n\n");
             attackingPlayer.increaseWins();
         }
+        */
     }
 }
