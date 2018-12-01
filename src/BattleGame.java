@@ -2,6 +2,7 @@
 //260873844
 import java.util.Scanner;
 import java.util.Random;
+import java.io.File;
 
 class BattleGame
 {
@@ -15,7 +16,8 @@ class BattleGame
     
     public static void main(String[] args)
     {
-        playGame("character.txt", "monster.txt");
+        System.out.println(System.getProperty("user.dir"));
+        playGame("../files_provided/player.txt", "../files_provided/monster.txt");
 
         Character mark = new Character("Mark", 10, 60, 0);
 

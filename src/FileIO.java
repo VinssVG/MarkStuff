@@ -13,20 +13,11 @@ class FileIO
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
 
-            String name = "";
-            double attackValue = 0;
-            double maxHealth = 0;
-            int numWins = 0;
+            String name = br.readLine();
+            double attackValue = Double.parseDouble(br.readLine());
+            double maxHealth = Double.parseDouble(br.readLine());
+            int numWins = Integer.parseInt(br.readLine());
 
-            int length = Integer.parseInt(br.readLine());
-            // read all the other lines and store them in the array
-            String currLine = br.readLine();
-            int index =0;
-            while(currLine != null)
-            {
-                currLine = br.readLine();
-                index++;
-            }
             br.close();
             fr.close();
             return new Character(name, attackValue, maxHealth, numWins);
