@@ -28,22 +28,21 @@ class BattleGame
         System.out.println();
         
         boolean exit = false;
-        int command = 0;
+        String command;
         //print info();
         while(!exit)
         {
             System.out.println("Enter a command:");
             printCommands();
-            command = scan.nextInt();
-            scan.nextLine();
+            command = scan.nextLine();
             
             switch(command)
             {
-                case 0:
+                case "quit":
                     System.out.println("Until next time...");
                     exit = true;
                     break;
-                case 1:
+                case "attack":
                     attack(hero, enemy);
                     break;
             }
@@ -53,8 +52,8 @@ class BattleGame
     public static void printCommands() 
     {
         System.out.println("\nType: ");
-        System.out.println("\t 1 - To Attack");
-        System.out.println("\t 0 - To quit.");
+        System.out.println("\t Attack - To Attack");
+        System.out.println("\t quit - To quit.");
     } 
     
     public static void main(String[] args)
@@ -76,7 +75,7 @@ class BattleGame
             player.increaseWins();
             return;
         }
-        System.out.println(monster.getName() + " current health is: " + monster.getCurrHealth()+"\n");
+        System.out.println(monster.getName() + "'s current health is: " + monster.getCurrHealth()+"\n");
         
         attack = monster.getAttackDamage(randomGenerator.nextInt());
         attackDamage = String.format("%1$.2f", attack);
@@ -88,7 +87,7 @@ class BattleGame
             monster.increaseWins();
             return;
         }
-        System.out.println(player.getName() + " current health is: " + player.getCurrHealth()+"\n");
+        System.out.println(player.getName() + "'s current health is: " + player.getCurrHealth()+"\n");
     }
 }
        
