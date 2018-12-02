@@ -2,86 +2,101 @@
 //260873844
 import java.util.Scanner;
 import java.util.Random;
+import java.io.File;
 
 class BattleGame
 {
     private static Random randomGenerator = new Random();
+    private static Scanner scan = new Scanner(System.in);
     
     public static void playGame(String character, String monster)
     {
+        
+        
         Character hero = (FileIO.readCharacter(character));
-        Character villian = (FileIO.readCharacter(monster));
-        System.out.println("hero is: "+hero+ " and the monster is: "+villian);
+        Character enemy = (FileIO.readCharacter(monster));
+    
+        System.out.println("Name: " + hero.getName());
+        System.out.println("Health: " + hero.getMaxHealth());
+        System.out.println("Attack: " + hero.getAttackValue());
+        System.out.println("Number of Wins: " + hero.getNumWins());
+        System.out.println();
+        System.out.println("Name: " + enemy.getName());
+        System.out.println("Health: " + enemy.getMaxHealth());
+        System.out.println("Attack: " + enemy.getAttackValue());
+        System.out.println("Number of Wins: " + enemy.getNumWins());
+        System.out.println();
+        
+        boolean exit = false;
+        int command = 0;
+        //print info();
+        while(!exit)
+        {
+            System.out.println("Enter a command:");
+            printCommands();
+            command = scan.nextInt();
+            scan.nextLine();
+            
+            switch(command)
+            {
+                case 0:
+                    System.out.println("Until next time...");
+                    exit = true;
+                    break;
+                case 1:
+                    attack(hero, enemy);
+                    break;
+            }
+        }       
     }
+    
+    public static void printCommands() 
+    {
+        System.out.println("\nType: ");
+        System.out.println("\t 1 - To Attack");
+        System.out.println("\t 0 - To quit.");
+    } 
     
     public static void main(String[] args)
     {
+
         playGame("player.txt", "monster.txt");
-        ;
+    }
+    
+    static void attack(Character player, Character monster)
+    {
+        double attack = player.getAttackDamage(randomGenerator.nextInt());
+        String attackDamage = String.format("%1$.2f", attack);
+        System.out.println(player.getName()+ " attacks " +monster.getName()+ " for " +attackDamage+ " damage.");
+        monster.takeDamage(Double.parseDouble(attackDamage));
+        if (monster.getCurrHealth() <= 0)
+        {
+            System.out.print(" Congratulations, " + monster.getName() + " has been vanquished! "); 
+            System.out.println(player.toString() + "\n\n");
+            player.increaseWins();
+            return;
+        }
+        System.out.println(monster.getName() + " current health is: " + monster.getCurrHealth()+"\n");
         
-/*
-        Character mark = new Character("Mark", 10, 60, 0);
-
-        System.out.println("Name      : " + mark.getName());
-        System.out.println("MaxHealth : " + mark.getMaxHealth());
-        System.out.println("Wins      : " + mark.getNumWins());
-        System.out.println("TooString : " + mark.toString());
-        System.out.println("Damage    : " + mark.getAttackDamage(123));
-        System.out.println("Damage    : " + mark.getAttackDamage(456));
-        System.out.println("Damage    : " + mark.getAttackDamage(789));
-        System.out.println();
-
-        SimulateFight(123);
-        SimulateFight(456);
-        SimulateFight(789);
-    }
-
-    static void SimulateFight(int seed)
-    {
-        Random randomGenerator = new Random(seed);
-
-        Character player1 = new Character("Mark", 20, 20, 0);
-        Character player2 = new Character("Vincent", 5, 80, 0);
-
-        System.out.println(player1.getName() + " VS " + player2.getName());
-
-        int round = 1;
-        while(player1.getCurrHeatlh() > 0 && player2.getCurrHeatlh() > 0)
+        attack = monster.getAttackDamage(randomGenerator.nextInt());
+        attackDamage = String.format("%1$.2f", attack);
+        System.out.println(monster.getName()+ " attacks " +player.getName()+ " for " +attackDamage+ " damage.");
+        player.takeDamage(Double.parseDouble(attackDamage));
+        if (player.getCurrHealth() <= 0)
         {
-            System.out.println("Round " + round + "   START");
-            System.out.println("Player 1 : " + player1.toString());
-            System.out.println("Player 2 : " + player2.toString());
-
-            double player1AttackDamage = player1.getAttackDamage(randomGenerator.nextInt());
-            double player2AttackDamage = player2.getAttackDamage(randomGenerator.nextInt());
-
-            if ((round & 1) != 0)
-            {
-                Attack(player1, player2, randomGenerator.nextInt());
-                if (player2.getCurrHeatlh() > 0)
-                    Attack(player2, player1, randomGenerator.nextInt());
-            }
-            else
-            {
-                Attack(player2, player1, randomGenerator.nextInt());
-                if (player1.getCurrHeatlh() > 0)
-                    Attack(player1, player2, randomGenerator.nextInt());
-            }
-
-            round++;
+            System.out.print("Oh no, " + monster.getName() + " won! You'll get em next time.\n\n"); 
+            monster.increaseWins();
+            return;
         }
-    }
-
-    static void Attack(Character attackingPlayer, Character defendingPlayer, int seed)
-    {
-        double attackDamage = attackingPlayer.getAttackDamage(seed);
-        System.out.println(attackingPlayer.getName() + " attacking " + defendingPlayer.getName() + " for " + attackDamage + " damage");
-        defendingPlayer.takeDamage(attackDamage);
-        if (defendingPlayer.getCurrHeatlh() <= 0)
-        {
-            System.out.println(defendingPlayer.getName() + " Died! " + attackingPlayer.toString() + "\n\n");
-            attackingPlayer.increaseWins();
-        }
-        */
+        System.out.println(player.getName() + " current health is: " + player.getCurrHealth()+"\n");
     }
 }
+       
+        
+ 
+        
+
+
+
+        
+    

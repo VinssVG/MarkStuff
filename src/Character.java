@@ -37,7 +37,10 @@ class Character
         return maxHealth;
     }
 
-    public double getCurrHeatlh() { return currHealth; }
+    public double getCurrHealth() 
+    { 
+        return currHealth; 
+    }
     
     public int getNumWins()
     {
