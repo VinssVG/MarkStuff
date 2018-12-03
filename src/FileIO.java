@@ -21,7 +21,8 @@ class FileIO
             br.close();
             fr.close();
             return new Character(name, attackValue, maxHealth, numWins);
-        } catch (FileNotFoundException e)
+        } 
+        catch (FileNotFoundException e)
         {
             System.out.println("the file was not there");
         } 
@@ -67,19 +68,25 @@ class FileIO
     
     public static void writeCharacter(Character newHero, String filename)
     {
-        throws IOException{
+        try
+        {
         FileWriter fw = new FileWriter(filename, true);
         BufferedWriter bw = new BufferedWriter(fw);
         // instructions to write on the file
-        for(int i=0; i<words.length; i++) {
+        for(int i=0; i<words.length; i++) 
+        {
             bw.write(words[i]);
             bw.newLine();
         }
+        
         bw.close();
         fw.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println("something went wrong");
+        }
     }
-    
 }
 
-    }
-}
+    
