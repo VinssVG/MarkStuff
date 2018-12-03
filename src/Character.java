@@ -2,6 +2,7 @@
 //260873844
 
 import java.util.Random;
+import java.util.ArrayList;
 
 class Character
 {
@@ -11,7 +12,8 @@ class Character
     private final double maxHealth;
     private double currHealth;
     private int numWins;
-
+    private static ArrayList spells;
+    
     // Constructors
     public Character(String name, double attackValue, double maxHealth, int numWins)
     {
@@ -69,6 +71,37 @@ class Character
     {
         numWins++;
     }
+    
+    public static void setSpells(ArrayList spells)
+    {
+        this.spells = spells;
+    }
+    
+    public void displaySpells()
+    {
+        for(int i=0;i<spells.length;i++)
+        {
+            System.out.println(spells[i]);
+        }
+    }
+    
+    public double castSpell(String spell, int x)
+    {
+        for(int i=0; i<spells.length;i++)
+        {
+            if(spells[i].equalsIgnoreCase(spell))
+            {
+                return getMagicDamage(x);
+            }
+            else
+            {
+                i++;
+            }
+            return -1;
+        }
+    }
+    
+    
     
                             
 }
