@@ -1,5 +1,6 @@
 //Mark Sollazzo
 //260873844
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 import java.io.File;
@@ -11,12 +12,25 @@ class BattleGame
     
     public static void playGame(String character, String monster, String cast)
     {
-        
-        
+        character = "player.txt";
+        monster = "monster.txt";
+        cast = "spells.txt";
+       
         Character hero = (FileIO.readCharacter(character));
         Character enemy = (FileIO.readCharacter(monster));
-        Character.setSpells(FileIO.readSpells(cast));
-    
+        //Character.setSpells(FileIO.readSpells(cast));
+        
+        if(FileIO.readSpells(cast) == null)
+        {
+            System.out.println("This match will be played without spells.");
+        }
+        else
+        {
+            hero.setSpells(FileIO.readSpells(cast));
+        }
+        System.out.println("Here are the available spells:");
+        hero.displaySpells();
+        System.out.println();
         System.out.println("Name: " + hero.getName());
         System.out.println("Health: " + hero.getMaxHealth());
         System.out.println("Attack: " + hero.getAttackValue());
@@ -46,8 +60,8 @@ class BattleGame
                 case "attack":
                     attack(hero, enemy);
                     break;
-                case "spells"
-                    cast();
+                case "spells":
+                    cast(hero, enemy);
                     break;                  
             }
         }       
@@ -60,12 +74,6 @@ class BattleGame
         System.out.println("\t quit - To quit.");
         System.out.println("\t spells - To cast a spell.");
     } 
-    
-    public static void main(String[] args)
-    {
-
-        playGame("player.txt", "monster.txt", "spells.txt");
-    }
     
     static void attack(Character player, Character monster)
     {
@@ -95,9 +103,9 @@ class BattleGame
         System.out.println(player.getName() + "'s current health is: " + player.getCurrHealth()+"\n");
     }
     
-    static void cast(String Spell.name)
+    static void cast(Character player, Character monster)
     {
-        ramdomGenerator.nextInt()
+        ramdomGenerator.nextInt();
     }
 }
        
