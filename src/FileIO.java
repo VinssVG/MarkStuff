@@ -29,7 +29,57 @@ class FileIO
         {
             System.out.println("something went wrong");
         }
-
         return null;
+    }
+    
+    public static ArrayList readSpells(String filename)
+    {
+        ArrayList<Spell> spells;
+        try
+        {
+            FileReader fr = new FileReader(filename);
+            BufferedReader br = new BufferedReader(fr);
+            
+            String line = br.readLine();
+            int i = 0;
+            
+            while(line!= null)
+            {
+            spells[i] = line;
+            i++;
+            }
+
+            br.close();
+            fr.close();
+            return spells;
+        } 
+        
+        catch (FileNotFoundException e)
+        {
+            System.out.println("the file was not there");
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("something went wrong");
+        }
+        return null;
+    }
+    
+    public static void writeCharacter(Character newHero, String filename)
+    {
+        throws IOException{
+        FileWriter fw = new FileWriter(filename, true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        // instructions to write on the file
+        for(int i=0; i<words.length; i++) {
+            bw.write(words[i]);
+            bw.newLine();
+        }
+        bw.close();
+        fw.close();
+    }
+    
+}
+
     }
 }
