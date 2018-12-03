@@ -12,7 +12,7 @@ class Character
     private final double maxHealth;
     private double currHealth;
     private int numWins;
-    private static ArrayList spells;
+    private static ArrayList<Spell> spells;
     
     // Constructors
     public Character(String name, double attackValue, double maxHealth, int numWins)
@@ -81,7 +81,7 @@ class Character
     {
         for(int i=0;i<spells.length;i++)
         {
-            System.out.println(spells[i]);
+            System.out.println("Name: " +spells[i]spell.name+ "Damage: " +spells[i].minDamage+ "-" +spells[i].maxDamage+ "Chance: "+spells[i]spell.accuracy);
         }
     }
     
