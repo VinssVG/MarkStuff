@@ -9,12 +9,13 @@ class BattleGame
     private static Random randomGenerator = new Random();
     private static Scanner scan = new Scanner(System.in);
     
-    public static void playGame(String character, String monster)
+    public static void playGame(String character, String monster, String cast)
     {
         
         
         Character hero = (FileIO.readCharacter(character));
         Character enemy = (FileIO.readCharacter(monster));
+        Character.setSpells(FileIO.readSpells(cast));
     
         System.out.println("Name: " + hero.getName());
         System.out.println("Health: " + hero.getMaxHealth());
@@ -36,7 +37,7 @@ class BattleGame
             printCommands();
             command = scan.nextLine();
             
-            switch(command)
+            switch(command.toLowerCase())
             {
                 case "quit":
                     System.out.println("Until next time...");
@@ -45,6 +46,9 @@ class BattleGame
                 case "attack":
                     attack(hero, enemy);
                     break;
+                case "spells"
+                    cast();
+                    break;                  
             }
         }       
     }
@@ -54,12 +58,13 @@ class BattleGame
         System.out.println("\nType: ");
         System.out.println("\t Attack - To Attack");
         System.out.println("\t quit - To quit.");
+        System.out.println("\t spells - To cast a spell.");
     } 
     
     public static void main(String[] args)
     {
 
-        playGame("player.txt", "monster.txt");
+        playGame("player.txt", "monster.txt", "spells.txt");
     }
     
     static void attack(Character player, Character monster)
@@ -88,6 +93,11 @@ class BattleGame
             return;
         }
         System.out.println(player.getName() + "'s current health is: " + player.getCurrHealth()+"\n");
+    }
+    
+    static void cast(String Spell.name)
+    {
+        ramdomGenerator.nextInt()
     }
 }
        
