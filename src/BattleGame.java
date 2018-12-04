@@ -1,5 +1,6 @@
 //Mark Sollazzo
 //260873844
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -7,24 +8,26 @@ class BattleGame
 {
     private static Random randomGenerator = new Random();
     private static Scanner scan = new Scanner(System.in);
-    
+
+    public static void main(String[] args)
+    {
+        playGame("player.txt", "monster.txt", "spells.txt");
+    }
+
     public static void playGame(String character, String monster, String cast)
     {
-        character = "player.txt";
-        monster = "monster.txt";
-        cast = "spells.txt";
-       
         Character hero = (FileIO.readCharacter(character));
         Character enemy = (FileIO.readCharacter(monster));
         //Character.setSpells(FileIO.readSpells(cast));
-        
-        if(FileIO.readSpells(cast) == null)
+
+        ArrayList<Spell> spells = FileIO.readSpells(cast);
+        if(spells == null)
         {
             System.out.println("This match will be played without spells.");
         }
         else
         {
-            hero.setSpells(FileIO.readSpells(cast));
+            hero.setSpells(spells);
         }
         System.out.println("Here are the available spells:");
         hero.displaySpells();

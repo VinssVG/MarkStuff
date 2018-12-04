@@ -56,6 +56,7 @@ class FileIO
             while(line!= null)
             {
                 spells.add(parseSpell(line));
+                line = br.readLine();
             }
 
             br.close();
