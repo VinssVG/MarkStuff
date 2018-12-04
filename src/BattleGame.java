@@ -1,9 +1,7 @@
 //Mark Sollazzo
 //260873844
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
-import java.io.File;
 
 class BattleGame
 {
@@ -105,7 +103,8 @@ class BattleGame
     
     static void cast(Character player, Character monster)
     {
-        ramdomGenerator.nextInt();
+        // todo
+        //this.ramdomGenerator.nextInt();
     }
 }
        
