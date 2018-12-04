@@ -57,13 +57,13 @@ class Spell
         Random randomGenerator = new Random(x);
         if(randomGenerator.nextDouble() > accuracy)
         {
-        System.out.println(this.name + " missed.");
-        return 0;
+            System.out.println(this.name + " missed.");
+            return 0;
         }
         else
         {
-        spellDamage = (randomGenerator.nextDouble() * minDamage) + maxDamage;
-        return spellDamage;
+            spellDamage = (randomGenerator.nextDouble() * minDamage) + maxDamage;
+            return spellDamage;
         }
         
     }

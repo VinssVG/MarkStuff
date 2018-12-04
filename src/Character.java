@@ -63,6 +63,7 @@ class Character
     
     public double takeDamage(double damage)
     {
+        System.out.println("taking damage " + damage);
         currHealth = currHealth - damage;
         return currHealth;
     }
@@ -81,7 +82,7 @@ class Character
     {
         for(int i = 0; i < spells.size(); i++)
         {
-            System.out.println("Name: " + spells.get(i).getName() + "Damage: " + spells.get(i).getMinDamage() + "-" + spells.get(i).getMaxDamage ()+ "Chance: " + spells.get(i).getAccuracy());
+            System.out.println("Name: " + spells.get(i).getName() + " Damage: " + spells.get(i).getMinDamage() + "-" + spells.get(i).getMaxDamage ()+ " Chance: " + spells.get(i).getAccuracy());
         }
     }
     
@@ -91,6 +92,7 @@ class Character
         {
             if(spells.get(i).getName().equalsIgnoreCase(spell))
             {
+                System.out.println("found matching spell " + spells.get(i).getName());
                 return spells.get(i).getMagicDamage(x);
             }
         }

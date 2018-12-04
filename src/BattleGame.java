@@ -61,8 +61,8 @@ class BattleGame
                 case "attack":
                     attack(hero, enemy);
                     break;
-                case "spells":
-                    cast(hero, enemy);
+                default:
+                    cast(hero, enemy, command.toLowerCase());
                     break;                  
             }
         }       
@@ -104,18 +104,9 @@ class BattleGame
         System.out.println(player.getName() + "'s current health is: " + player.getCurrHealth()+"\n");
     }
     
-    static void cast(Character player, Character monster)
+    static void cast(Character player, Character monster, String spellName)
     {
-        // todo
-        //this.ramdomGenerator.nextInt();
+        System.out.println("cast " + spellName);
+        monster.takeDamage(player.castSpell(spellName, randomGenerator.nextInt()));
     }
 }
-       
-        
- 
-        
-
-
-
-        
-    

@@ -37,14 +37,14 @@ class FileIO
     public static Spell parseSpell(String line)
     {
         // parse individual fields from the line, with stuff like Integer.ParseInt, etc
-        String name = "";
+        String name = "dummy";
         double minDamage = 1;
         double maxDamage = 2;
         double accuracy = 1;
         return new Spell(name, minDamage, maxDamage, accuracy);
     }
 
-    public static ArrayList readSpells(String filename)
+    public static ArrayList<Spell> readSpells(String filename)
     {
         ArrayList<Spell> spells = new ArrayList<Spell>();
         try
