@@ -16,22 +16,38 @@ class Spell
     {
         this.name = name;
         this.minDamage = minDamage;
-        
         this.maxDamage = maxDamage;
         this.accuracy = accuracy;
+
         if(minDamage > maxDamage)
         {
-        throw new IllegalArgumentException ("Minimum Damage cannot be greater than the maximum Damage");
+            throw new IllegalArgumentException ("Minimum Damage cannot be greater than the maximum Damage");
         }
+
         if(minDamage < 0)
         {
-        throw new IllegalArgumentException("Minimum Damage cannot be less than 0");
+            throw new IllegalArgumentException("Minimum Damage cannot be less than 0");
         }
     }
         
     public String getName()
     {
         return this.name;
+    }
+
+    public double getMinDamage()
+    {
+        return this.minDamage;
+    }
+
+    public double getMaxDamage()
+    {
+        return this.maxDamage;
+    }
+
+    public double getAccuracy()
+    {
+        return this.accuracy;
     }
     
     public double getMagicDamage(int x)

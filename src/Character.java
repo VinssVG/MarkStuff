@@ -72,33 +72,35 @@ class Character
         numWins++;
     }
     
-    public static void setSpells(ArrayList spells)
+    public void setSpells(ArrayList spells)
     {
-        //this.spells = spells;
+        this.spells = spells;
     }
     
     public void displaySpells()
     {
-        //for(int i=0;i<spells.length;i++)
+
+        for(int i=0;i<spells.length;i++)
         {
-        //    System.out.println("Name: " +spells[i]spell.name+ "Damage: " +spells[i].minDamage+ "-" +spells[i].maxDamage+ "Chance: "+spells[i]spell.accuracy);
+           System.out.println("Name: " +spells[i]spell.name+ "Damage: " +spells[i].minDamage+ "-" +spells[i].maxDamage+ "Chance: "+spells[i]spell.accuracy);
+
+        for(int i = 0; i < spells.size(); i++)
+        {
+            System.out.println("Name: " + spells.get(i).getName() + "Damage: " + spells.get(i).getMinDamage() + "-" + spells.get(i).getMaxDamage ()+ "Chance: " + spells.get(i).getAccuracy());
+
         }
     }
     
     public double castSpell(String spell, int x)
     {
-    //    for(int i=0; i<spells.length;i++)
+        for(int i=0; i<spells.size();i++)
         {
-            if(spells[i].equalsIgnoreCase(spell))
+            if(spells.get(i).getName().equalsIgnoreCase(spell))
             {
-                return getMagicDamage(x);
+                return spells.get(i).getMagicDamage(x);
             }
-            else
-            {
-                i++;
-            }
-            return -1;
         }
+        return -1;
     }
     
     
