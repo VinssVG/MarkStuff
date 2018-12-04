@@ -105,7 +105,7 @@ class BattleGame
     
     static void cast(Character player, Character monster)
     {
-        ramdomGenerator.nextInt();
+        //ramdomGenerator.nextInt();
     }
 }
        
