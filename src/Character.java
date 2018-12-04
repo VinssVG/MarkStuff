@@ -79,15 +79,9 @@ class Character
     
     public void displaySpells()
     {
-
-        for(int i=0;i<spells.length;i++)
-        {
-           System.out.println("Name: " +spells[i]spell.name+ "Damage: " +spells[i].minDamage+ "-" +spells[i].maxDamage+ "Chance: "+spells[i]spell.accuracy);
-
         for(int i = 0; i < spells.size(); i++)
         {
             System.out.println("Name: " + spells.get(i).getName() + "Damage: " + spells.get(i).getMinDamage() + "-" + spells.get(i).getMaxDamage ()+ "Chance: " + spells.get(i).getAccuracy());
-
         }
     }
     
