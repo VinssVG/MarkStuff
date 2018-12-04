@@ -74,20 +74,20 @@ class Character
     
     public static void setSpells(ArrayList spells)
     {
-        this.spells = spells;
+        //this.spells = spells;
     }
     
     public void displaySpells()
     {
-        for(int i=0;i<spells.length;i++)
+        //for(int i=0;i<spells.length;i++)
         {
-            System.out.println("Name: " +spells[i]spell.name+ "Damage: " +spells[i].minDamage+ "-" +spells[i].maxDamage+ "Chance: "+spells[i]spell.accuracy);
+        //    System.out.println("Name: " +spells[i]spell.name+ "Damage: " +spells[i].minDamage+ "-" +spells[i].maxDamage+ "Chance: "+spells[i]spell.accuracy);
         }
     }
     
     public double castSpell(String spell, int x)
     {
-        for(int i=0; i<spells.length;i++)
+    //    for(int i=0; i<spells.length;i++)
         {
             if(spells[i].equalsIgnoreCase(spell))
             {
