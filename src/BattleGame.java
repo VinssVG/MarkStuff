@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
 
+// main method for playing the game
 class BattleGame
 {
     private static Random randomGenerator = new Random();
@@ -18,7 +19,6 @@ class BattleGame
     {
         Character hero = (FileIO.readCharacter(character));
         Character enemy = (FileIO.readCharacter(monster));
-        //Character.setSpells(FileIO.readSpells(cast));
 
         ArrayList<Spell> spells = FileIO.readSpells(cast);
         if(spells == null)
@@ -42,6 +42,8 @@ class BattleGame
         System.out.println("Attack: " + enemy.getAttackValue());
         System.out.println("Number of Wins: " + enemy.getNumWins());
         System.out.println();
+        System.out.println("Here are the available spells:");
+        hero.displaySpells();
         
         boolean exit = false;
         String command;
