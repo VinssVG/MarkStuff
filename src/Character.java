@@ -54,25 +54,25 @@ class Character
     {
         return this.name + " current health is " + this.currHealth + ".";
     }
-    
+    // generates the damage done by the attack command
     public double getAttackDamage(int seed)
     {
         Random randomGenerator = new Random(seed);
         return this.attackValue * ((randomGenerator.nextDouble() * 0.3) + 0.7);
     }
-    
+    // generates the damage taken by the attack command to an opposing player
     public double takeDamage(double damage)
     {
         System.out.println("taking damage " + damage);
         currHealth = currHealth - damage;
         return currHealth;
     }
-    
+    // increases the # of wins after a battle is over
     public void increaseWins()
     {
         numWins++;
     }
-    
+    // adds spells
     public void setSpells(ArrayList<Spell> spells)
     {
         this.spells = spells;
