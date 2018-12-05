@@ -52,7 +52,7 @@ class Character
     // Other Methods
     public String toString()
     {
-        return this.name + " current health is " + this.currHealth + ".";
+        return this.name + " current health is " + String.format("%.2f", this.currHealth) + ".";
     }
     // generates the damage done by the attack command
     public double getAttackDamage(int seed)
@@ -63,7 +63,6 @@ class Character
     // generates the damage taken by the attack command to an opposing player
     public double takeDamage(double damage)
     {
-        System.out.println("taking damage " + damage);
         currHealth = currHealth - damage;
         return currHealth;
     }

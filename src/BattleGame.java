@@ -7,7 +7,7 @@ import java.util.Random;
 // main method for playing the game
 class BattleGame
 {
-    private static Random randomGenerator = new Random();
+    private static Random randomGenerator = new Random(456);
     private static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args)
@@ -29,8 +29,6 @@ class BattleGame
         {
             hero.setSpells(spells);
         }
-        System.out.println("Here are the available spells:");
-        hero.displaySpells();
         System.out.println();
         System.out.println("Name: " + hero.getName());
         System.out.println("Health: " + hero.getMaxHealth());
@@ -44,12 +42,12 @@ class BattleGame
         System.out.println();
         System.out.println("Here are the available spells:");
         hero.displaySpells();
-        
+
         boolean exit = false;
         String command;
-        //print info();
         while(!exit)
         {
+            System.out.println();
             System.out.println("Enter a command:");
             printCommands();
             command = scan.nextLine();
@@ -67,7 +65,30 @@ class BattleGame
                     cast(hero, enemy, command.toLowerCase());
                     break;                  
             }
-        }       
+
+            if (enemy.getCurrHealth() <= 0)
+            {
+                hero.increaseWins();
+                System.out.println();
+                System.out.println("Yay! " + enemy.getName() + " has vanquished!");
+                System.out.println(hero.getName() + " has won " + hero.getNumWins() + " times.");
+                FileIO.writeCharacter(hero, "player.txt");
+                exit = true;
+            }
+            else
+            {
+                attack(enemy, hero);
+                if (hero.getCurrHealth() <= 0)
+                {
+                    enemy.increaseWins();
+                    System.out.println();
+                    System.out.println("Oh no, " + enemy.getName() + " won! You'll get em next time.");
+                    System.out.println(enemy.getName() + " has won " + enemy.getNumWins() + " times.");
+                    FileIO.writeCharacter(enemy, "monster.txt");
+                    exit = true;
+                }
+            }
+        }
     }
     
     public static void printCommands() 
@@ -78,37 +99,37 @@ class BattleGame
         System.out.println("\t spells - To cast a spell.");
     } 
     
-    static void attack(Character player, Character monster)
+    static void attack(Character attcker, Character defender)
     {
-        double attack = player.getAttackDamage(randomGenerator.nextInt());
-        String attackDamage = String.format("%1$.2f", attack);
-        System.out.println(player.getName()+ " attacks " +monster.getName()+ " for " +attackDamage+ " damage.");
-        monster.takeDamage(Double.parseDouble(attackDamage));
-        if (monster.getCurrHealth() <= 0)
+        double attackDamage = attcker.getAttackDamage(randomGenerator.nextInt());
+
+        System.out.println();
+        System.out.println(attcker.getName()+ " attacks " + defender.getName()+ " for " +String.format("%1$.2f", attackDamage)+ " damage.");
+        defender.takeDamage(attackDamage);
+        if (defender.getCurrHealth() <= 0)
         {
-            System.out.print(" Congratulations, " + monster.getName() + " has been vanquished! "); 
-            System.out.println(player.toString() + "\n\n");
-            player.increaseWins();
-            return;
+            System.out.println(defender.getName() + " was knocked out!");
         }
-        System.out.println(monster.getName() + "'s current health is: " + monster.getCurrHealth()+"\n");
-        
-        attack = monster.getAttackDamage(randomGenerator.nextInt());
-        attackDamage = String.format("%1$.2f", attack);
-        System.out.println(monster.getName()+ " attacks " +player.getName()+ " for " +attackDamage+ " damage.");
-        player.takeDamage(Double.parseDouble(attackDamage));
-        if (player.getCurrHealth() <= 0)
+        else
         {
-            System.out.print("Oh no, " + monster.getName() + " won! You'll get em next time.\n\n"); 
-            monster.increaseWins();
-            return;
+            System.out.println(defender.toString());
         }
-        System.out.println(player.getName() + "'s current health is: " + player.getCurrHealth()+"\n");
     }
     
-    static void cast(Character player, Character monster, String spellName)
+    static void cast(Character attackingCharacter, Character defendingCharacter, String spellName)
     {
-        System.out.println("cast " + spellName);
-        monster.takeDamage(player.castSpell(spellName, randomGenerator.nextInt()));
+        double damage = attackingCharacter.castSpell(spellName, randomGenerator.nextInt());
+        if (damage > 0)
+        {
+            System.out.println();
+            System.out.println(attackingCharacter.getName() + " casts " + spellName + ", dealing " + String.format("%.2f", damage)+ " damage!");
+            defendingCharacter.takeDamage(damage);
+            System.out.println(defendingCharacter.toString());
+        }
+        else
+        {
+            System.out.println();
+            System.out.println(attackingCharacter.getName() + " tried to cast " + spellName + " but failed!");
+        }
     }
 }

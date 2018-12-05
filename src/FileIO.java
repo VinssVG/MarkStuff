@@ -36,10 +36,11 @@ class FileIO
 
     public static Spell parseSpell(String line)
     {
-        String name = "dummy";
-        double minDamage = 1;
-        double maxDamage = 2;
-        double accuracy = 1;
+        String words[] = line.split("\t");
+        String name = words[0];
+        double minDamage = Double.parseDouble(words[1]);
+        double maxDamage = Double.parseDouble(words[2]);
+        double accuracy = Double.parseDouble(words[3]);
         return new Spell(name, minDamage, maxDamage, accuracy);
     }
     
@@ -94,6 +95,8 @@ class FileIO
 
             bw.close();
             fw.close();
+
+            System.out.println("Successfully wrote to file : " + filename);
         }
         catch (IOException e)
         {
