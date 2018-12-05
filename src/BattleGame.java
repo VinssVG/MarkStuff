@@ -15,10 +15,10 @@ class BattleGame
         playGame("player.txt", "monster.txt", "spells.txt");
     }
 
-    public static void playGame(String character, String monster, String cast)
+    public static void playGame(String playerFile, String monsterFile, String cast)
     {
-        Character hero = (FileIO.readCharacter(character));
-        Character enemy = (FileIO.readCharacter(monster));
+        Character hero = (FileIO.readCharacter(playerFile));
+        Character enemy = (FileIO.readCharacter(monsterFile));
 
         ArrayList<Spell> spells = FileIO.readSpells(cast);
         if(spells == null)
@@ -72,7 +72,7 @@ class BattleGame
                 System.out.println();
                 System.out.println("Yay! " + enemy.getName() + " has vanquished!");
                 System.out.println(hero.getName() + " has won " + hero.getNumWins() + " times.");
-                FileIO.writeCharacter(hero, "player.txt");
+                FileIO.writeCharacter(hero, playerFile);
                 exit = true;
             }
             else
@@ -84,7 +84,7 @@ class BattleGame
                     System.out.println();
                     System.out.println("Oh no, " + enemy.getName() + " won! You'll get em next time.");
                     System.out.println(enemy.getName() + " has won " + enemy.getNumWins() + " times.");
-                    FileIO.writeCharacter(enemy, "monster.txt");
+                    FileIO.writeCharacter(enemy, monsterFile);
                     exit = true;
                 }
             }
