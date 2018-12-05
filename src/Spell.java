@@ -5,6 +5,7 @@ import java.util.Random;
 
 class Spell
 {
+    // attributes
     private final String name;
     private final double minDamage;
     private final double maxDamage;
@@ -12,6 +13,7 @@ class Spell
     
     private static Random randomGenerator = new Random();
     
+    //constructors
     public Spell(String name, double minDamage, double maxDamage, double accuracy)
     {
         this.name = name;
@@ -50,6 +52,9 @@ class Spell
         return this.accuracy;
     }
     
+    // other methods
+    
+    // generates the amount of damage done by a spell
     public double getMagicDamage(int x)
     {
         double spellDamage = 0;
