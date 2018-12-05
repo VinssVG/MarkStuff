@@ -83,16 +83,17 @@ class FileIO
         {
             FileWriter fw = new FileWriter(filename, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            
-            //String words[];
-            //for(int i=0; i<words.length; i++)
-            {
-               // bw.write(words[i]);
-              //  bw.newLine();
-            }
-        
-            //bw.close();
-            //fw.close();
+
+            bw.write(newHero.getName());
+            bw.newLine();
+            bw.write(String.format("%f", newHero.getAttackValue()));
+            bw.newLine();
+            bw.write(String.format("%f", newHero.getMaxHealth()));
+            bw.newLine();
+            bw.write(String.format("%d", newHero.getNumWins()));
+
+            bw.close();
+            fw.close();
         }
         catch (IOException e)
         {

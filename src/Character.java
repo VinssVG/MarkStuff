@@ -12,7 +12,7 @@ class Character
     private final double maxHealth;
     private double currHealth;
     private int numWins;
-    private static ArrayList<Spell> spells;
+    private static ArrayList<Spell> spells = new ArrayList<Spell>();
     
     // Constructors
     public Character(String name, double attackValue, double maxHealth, int numWins)
@@ -73,16 +73,16 @@ class Character
         numWins++;
     }
     // adds spells
-    public void setSpells(ArrayList<Spell> spells)
+    public static void setSpells(ArrayList<Spell> newSpells)
     {
-        this.spells = spells;
+        spells = newSpells;
     }
     
-    public void displaySpells()
+    public static void displaySpells()
     {
         for(int i = 0; i < spells.size(); i++)
         {
-            System.out.println("Name: " + spells.get(i).getName() + " Damage: " + spells.get(i).getMinDamage() + "-" + spells.get(i).getMaxDamage ()+ " Chance: " + spells.get(i).getAccuracy());
+            System.out.println(spells.get(i).toString());
         }
     }
     
@@ -92,7 +92,6 @@ class Character
         {
             if(spells.get(i).getName().equalsIgnoreCase(spell))
             {
-                System.out.println("found matching spell " + spells.get(i).getName());
                 return spells.get(i).getMagicDamage(x);
             }
         }

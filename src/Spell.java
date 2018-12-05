@@ -52,13 +52,9 @@ class Spell
         return this.accuracy;
     }
     
-    // other methods
-    
     // generates the amount of damage done by a spell
     public double getMagicDamage(int x)
     {
-        double spellDamage = 0;
-        
         Random randomGenerator = new Random(x);
         if(randomGenerator.nextDouble() > accuracy)
         {
@@ -67,14 +63,12 @@ class Spell
         }
         else
         {
-            spellDamage = (randomGenerator.nextDouble() * minDamage) + maxDamage;
-            return spellDamage;
+            return minDamage + randomGenerator.nextDouble() * (maxDamage - minDamage);
         }
-        
     }
     
     public String toString()
     {
-        return this.name + "'s does " +minDamage+ "-"+maxDamage+" and has an accuracy of " +(accuracy * 100)+ "% .";
+        return this.name + " does " +minDamage+ "-"+maxDamage+" and has an accuracy of " +(accuracy * 100)+ "% .";
     }
 }
