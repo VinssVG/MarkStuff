@@ -82,7 +82,7 @@ class FileIO
     {
         try
         {
-            FileWriter fw = new FileWriter(filename, true);
+            FileWriter fw = new FileWriter(filename, false);
             BufferedWriter bw = new BufferedWriter(fw);
 
             bw.write(newHero.getName());
