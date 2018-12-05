@@ -6,7 +6,7 @@ import java.util.*;
 
 class FileIO
 {
-    
+    // reads characters from textfile
     public static Character readCharacter(String filename)
     {
         try
@@ -36,14 +36,14 @@ class FileIO
 
     public static Spell parseSpell(String line)
     {
-        // parse individual fields from the line, with stuff like Integer.ParseInt, etc
         String name = "dummy";
         double minDamage = 1;
         double maxDamage = 2;
         double accuracy = 1;
         return new Spell(name, minDamage, maxDamage, accuracy);
     }
-
+    
+    // reads spellsfrom textfile
     public static ArrayList<Spell> readSpells(String filename)
     {
         ArrayList<Spell> spells = new ArrayList<Spell>();
@@ -75,23 +75,24 @@ class FileIO
         return null;
     }
     
+    
+    //method allowing you to write on the file
     public static void writeCharacter(Character newHero, String filename)
     {
         try
         {
             FileWriter fw = new FileWriter(filename, true);
             BufferedWriter bw = new BufferedWriter(fw);
-            // instructions to write on the file
-
-            // todo : you need to generate the list of words dood
+            
+            //String words[];
             //for(int i=0; i<words.length; i++)
-            //{
-            //    bw.write(words[i]);
-            //    bw.newLine();
-            //}
+            {
+               // bw.write(words[i]);
+              //  bw.newLine();
+            }
         
-            bw.close();
-            fw.close();
+            //bw.close();
+            //fw.close();
         }
         catch (IOException e)
         {
